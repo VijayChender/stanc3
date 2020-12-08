@@ -358,9 +358,18 @@ let semantic_check_variadic_ode ~is_cond_dist ~loc id es =
       Stan_math_signatures.variadic_ode_tol_arg_types
     else []
   in
+  let optional_tol_mandatory_args2 =
+    if Stan_math_signatures.is_variadic_ode_tol_fn id.name then
+      Stan_math_signatures.variadic_ode_tol_vector_abs_tol_arg_types
+    else []
+  in
   let mandatory_arg_types =
     Stan_math_signatures.variadic_ode_mandatory_arg_types
     @ optional_tol_mandatory_args
+  in
+  let mandatory_arg_types2 =
+    Stan_math_signatures.variadic_ode_mandatory_arg_types
+    @ optional_tol_mandatory_args2
   in
   let generic_variadic_ode_semantic_error =
     Semantic_error.illtyped_variadic_ode loc id.name
@@ -390,7 +399,8 @@ let semantic_check_variadic_ode ~is_cond_dist ~loc id es =
           Stan_math_signatures.variadic_ode_mandatory_fun_args
         && UnsizedType.check_of_same_type_mod_conv "" return_type
              Stan_math_signatures.variadic_ode_fun_return_type
-        && args_match mandatory_arg_types mandatory_args
+        && ( args_match mandatory_arg_types mandatory_args
+           || args_match mandatory_arg_types2 mandatory_args )
       then
         if args_match variadic_fun_args variadic_args then
           mk_typed_expression

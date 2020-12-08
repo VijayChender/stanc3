@@ -13,7 +13,7 @@ data {
 }
 
 transformed data {
-  vector[N] zd[N] = ode_bdf_tol(f, vd, rd, rad, 1e-6, 1e-6, 100, rd, vd);
+  vector[N] zd[N] = ode_bdf_tol(f, vd, rd, rad, 1e-6, vd, 100, rd, vd);
   zd = ode_bdf_tol(f, vd, id, rad, 1e-6, 1e-6, 100, rd, vd);
   zd = ode_adams_tol(f, vd, rd, rad, 1e-6, 1e-6, 100, rd, vd);
   zd = ode_adams_tol(f, vd, id, rad, 1e-6, 1e-6, 100, rd, vd);

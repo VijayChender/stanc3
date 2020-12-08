@@ -13502,7 +13502,7 @@ static const std::vector<string> locations_array__ = {" (found before start of p
                                                       " (in 'new_integrate_interface.stan', line 12, column 2 to column 15)",
                                                       " (in 'new_integrate_interface.stan', line 16, column 15 to column 16)",
                                                       " (in 'new_integrate_interface.stan', line 16, column 9 to column 10)",
-                                                      " (in 'new_integrate_interface.stan', line 16, column 2 to column 73)",
+                                                      " (in 'new_integrate_interface.stan', line 16, column 2 to column 71)",
                                                       " (in 'new_integrate_interface.stan', line 17, column 2 to column 60)",
                                                       " (in 'new_integrate_interface.stan', line 18, column 2 to column 62)",
                                                       " (in 'new_integrate_interface.stan', line 19, column 2 to column 62)",
@@ -13678,8 +13678,8 @@ class new_integrate_interface_model final : public model_base_crtp<new_integrate
       
       current_statement__ = 610;
       assign(zd, nil_index_list(),
-        ode_bdf_tol(f_odefunctor__(), vd, rd, rad, 1e-6, 1e-6, 100,
-          pstream__, rd, vd), "assigning variable zd");
+        ode_bdf_tol(f_odefunctor__(), vd, rd, rad, 1e-6, vd, 100, pstream__,
+          rd, vd), "assigning variable zd");
       current_statement__ = 611;
       assign(zd, nil_index_list(),
         ode_bdf_tol(f_odefunctor__(), vd, id, rad, 1e-6, 1e-6, 100,

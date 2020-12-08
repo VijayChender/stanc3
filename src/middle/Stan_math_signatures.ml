@@ -99,6 +99,10 @@ let variadic_ode_tol_arg_types =
   [ (UnsizedType.AutoDiffable, UnsizedType.UReal)
   ; (AutoDiffable, UReal); (DataOnly, UInt) ]
 
+let variadic_ode_tol_vector_abs_tol_arg_types =
+  [ (UnsizedType.AutoDiffable, UnsizedType.UReal)
+  ; (AutoDiffable, UVector); (DataOnly, UInt) ]
+
 let variadic_ode_mandatory_arg_types =
   [ (UnsizedType.AutoDiffable, UnsizedType.UVector)
   ; (AutoDiffable, UReal)
